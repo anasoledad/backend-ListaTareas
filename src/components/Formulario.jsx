@@ -14,7 +14,7 @@ const Formulario = () => {
           value={tarea}
           />
           <Button variant="primary" type="submit">
-          Enviar
+            Enviar
           </Button>
         </Form.Group>
       </Form>
