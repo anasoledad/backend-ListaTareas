@@ -4,11 +4,17 @@ import { useState } from 'react';
 
 const Formulario = () => {
   const [tarea, setTarea] = useState('');
-  const [tareas, setTareas] = useState([]);
+  const [listadoTareas, setListadoTareas] = useState([]);
 
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+   setListadoTareas([...listadoTareas, tarea]);
+  //  console.log(e.target)
+  setTarea('');
+  }
   return (
     <section>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3 d-flex" controlId="tarea">
           <Form.Control type="texto" placeholder="Ingrese una tarea" onChange={(e)=> setTarea(e.target.value)}
           value={tarea}
