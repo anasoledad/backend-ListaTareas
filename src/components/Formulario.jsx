@@ -23,7 +23,7 @@ const Formulario = () => {
           </Button>
         </Form.Group>
       </Form>
-      <ListaTareas></ListaTareas>
+      <ListaTareas listadoTareas={listadoTareas}></ListaTareas>
     </section>
   );
 };
