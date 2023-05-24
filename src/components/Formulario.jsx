@@ -9,7 +9,6 @@ const Formulario = () => {
   const handleSubmit = (e)=>{
     e.preventDefault();
    setListadoTareas([...listadoTareas, tarea]);
-  //  console.log(e.target)
   setTarea('');
   }
   return (
