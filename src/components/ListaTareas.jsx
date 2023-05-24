@@ -1,10 +1,13 @@
 import { ListGroup } from "react-bootstrap";
 import ItemTarea from "./ItemTarea";
 
-const ListaTareas = () => {
+const ListaTareas = ({listadoTareas, borrarTarea}) => {
   return (
     <ListGroup>
-        <ItemTarea></ItemTarea>
+      {
+        listadoTareas.map((tarea, indice) => <ItemTarea key= {indice} tarea={tarea} borrarTarea={borrarTarea}></ItemTarea>)
+      }
+        
     </ListGroup>
   );
 };
