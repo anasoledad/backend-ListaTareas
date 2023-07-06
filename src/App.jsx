@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Container className='my-5 mainPage'>
-        <h1 className='display-4 text-center'>Lista de Tareas</h1>
+        <h1 className='display-5 text-center fw-bold'>Lista de Tareas</h1>
         <hr/>
         {/* aqui agrego el formulario */}
         <Formulario></Formulario>

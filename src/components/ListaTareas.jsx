@@ -1,13 +1,31 @@
-import { ListGroup } from "react-bootstrap";
+import { ListGroup } from 'react-bootstrap';
 import ItemTarea from "./ItemTarea";
+import { obtenerTareas } from '../helpers/queries';
+import { useState , useEffect} from 'react';
 
-const ListaTareas = ({listadoTareas, borrarTarea}) => {
+const ListaTareas = () => {
+
+  const [tareas, setTareas]= useState([]);
+
+  useEffect(()=>{
+    obtenerTareas().then((respuesta)=>{
+      console.log(respuesta);
+      if (respuesta) {
+        setTareas(respuesta);
+    } else {
+        Swal.fire(
+            "Se produjo un error !",
+            `Intentele realizar esta operacion  mas tarde.`,
+            "error"
+        );
+    }
+    })
+  },[])
   return (
     <ListGroup>
-      {
-        listadoTareas.map((tarea, indice) => <ItemTarea key= {indice} tarea={tarea} borrarTarea={borrarTarea}></ItemTarea>)
-      }
-        
+       {tareas.map((tarea) => (
+        <ItemTarea key={tarea.id} tarea={tarea} setTareas={setTareas} />
+      ))}
     </ListGroup>
   );
 };
