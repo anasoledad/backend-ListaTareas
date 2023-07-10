@@ -9,9 +9,9 @@ export const obtenerTareas = async ()=>{
         console.log(error)
     }
 }
-export const obtenerTarea = async(id)=>{
+export const obtenerTarea = async(_id)=>{
     try{
-        const respuesta = await fetch(`${URL_Tarea}/${id}`);
+        const respuesta = await fetch(`${URL_Tarea}/${_id}`);
         const tareaEditar = await respuesta.json();
         return tareaEditar;
     }catch(error){
@@ -20,9 +20,9 @@ export const obtenerTarea = async(id)=>{
 } 
 
 
-export const consultaBorrarTarea = async(id)=>{
+export const consultaBorrarTarea = async(_id)=>{
     try{
-        const respuesta = await fetch(`${URL_Tarea}/${id}`, {
+        const respuesta = await fetch(`${URL_Tarea}/${_id}`, {
             method: 'DELETE'
         });
         return respuesta;
@@ -42,6 +42,21 @@ export const consultaCrearTarea = async (tarea) => {
         });
         return respuesta;
     } catch (error) {
+        console.log(error);
+    }
+}
+
+export const consultaEditarTarea = async(tarea, _id)=>{
+    try{
+        const respuesta = await fetch(URL_Tarea+'/'+_id, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(tarea)
+        });
+        return respuesta;
+    }catch (error){
         console.log(error);
     }
 }
